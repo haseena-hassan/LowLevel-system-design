@@ -1,43 +1,33 @@
-/*
- * Liskov Substitution Principle
- *  -   If B is a subclass of A : 
- *          => object(B) should be replacable with object(A)
- *          => without breaking the behaviour
- *  -   Sunclass should extend the capability
- *  -   Subclass should not be narrowing it down 
- */
+import java.util.ArrayList;
 
+class Vehicle {
+    public int getWheelCount()  { return 2; }
+    public String turnOnEngine()   { return "Engine Turned On"; }
+}
 
- interface TwoWheeler {
-    public void turnOnEngine();
-    public void accelerate();
- }
-
- class Bike implements TwoWheeler {
-    Boolean engineOn;
-    int speed;
-
+class Car extends Vehicle {
     @Override
-    public void turnOnEngine() {
-        engineOn = true;
-    }
+    public int getWheelCount()  { return 4; } 
+}
 
+class Scooter extends Vehicle {
+
+}
+
+class TriCycle extends Vehicle {
     @Override
-    public void accelerate() {
-        speed = speed + 10;
-    }
- }
+    public String turnOnEngine()   { throw new AssertionError("Engine not present"); } 
+}
 
-class Bicycle implements TwoWheeler {
-    int speed;
+class Main {
+    public static void main() {
+        ArrayList<Vehicle> vehicleList = new ArrayList<>();
+        vehicleList.add(new Car());
+        vehicleList.add(new Scooter());
+        vehicleList.add(new TriCycle());
 
-    @Override
-    public void turnOnEngine() {
-        throw new AssertionError("Engine Not found");
-    }
-
-    @Override
-    public void accelerate() {
-        speed = speed + 5;
+        for(Vehicle vehicle: vehicleList) {
+            System.out.println("Status " + vehicle.turnOnEngine());     // Tricycle function call throws error
+        }
     }
 }

@@ -27,7 +27,7 @@
     }
  }
 
- class Main {
+ class Maiin {
     public static void main() {
         Computer myComputer = new Computer(new WiredKeyboard_(), new BluetoothMouse_());
 

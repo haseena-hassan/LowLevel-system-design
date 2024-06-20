@@ -48,7 +48,7 @@
     }
  }
 
- class Main_ {
+ class Maain {
     public static void main() {
         Macbook myMacbook = new Macbook(new WiredKeyboard(), new BluetoothMouse());
         Macbook sistersMacbook = new Macbook(new BluetoothKeyboard(), new WiredMouse());
